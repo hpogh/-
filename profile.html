@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Личный кабинет - Кофейня у дома">
+  <title>Кофейня у дома - Личный кабинет</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="brand">
+        <div class="logo">
+          <i class="fas fa-mug-hot"></i>
+        </div>
+        <div>
+          <h1 class="site-title">Кофейня у дома</h1>
+          <div class="site-subtitle">Личный кабинет сотрудника</div>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <a href="/index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+        <a href="/menu.html" class="nav-link"><i class="fas fa-coffee"></i> Меню</a>
+        <a href="/contacts.html" class="nav-link"><i class="fas fa-map-marker-alt"></i> Контакты</a>
+        <a href="/auth.html?logout" class="nav-link"><i class="fas fa-sign-out-alt"></i> Выйти</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="profile-section">
+      <div class="profile-hero">
+        <div class="profile-avatar-large">
+          <i class="fas fa-user-circle"></i>
+        </div>
+        <h1>Личный кабинет</h1>
+        <p class="profile-subtitle">Управляйте своими данными и настройками</p>
+      </div>
+
+      <div class="profile-content">
+        <div id="profile-info">
+          <div class="loading">
+            <i class="fas fa-coffee"></i>
+            <span>Загрузка данных...</span>
+          </div>
+        </div>
+
+        <div id="edit-form" style="display: none;">
+          <div class="edit-form-header">
+            <h2><i class="fas fa-edit"></i> Редактировать данные</h2>
+          </div>
+          <form id="profile-form" class="profile-form">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="first-name"><i class="fas fa-user"></i> Имя</label>
+                <input id="first-name" type="text" required>
+              </div>
+              <div class="form-group">
+                <label for="last-name"><i class="fas fa-user"></i> Фамилия</label>
+                <input id="last-name" type="text" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone"><i class="fas fa-phone"></i> Телефон</label>
+              <input id="phone" type="tel" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email"><i class="fas fa-envelope"></i> Email</label>
+              <input id="email" type="email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="position"><i class="fas fa-briefcase"></i> Должность</label>
+              <select id="position" required>
+                <option value="бармен">Бармен</option>
+                <option value="официант">Официант</option>
+                <option value="менеджер">Менеджер</option>
+              </select>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Сохранить</button>
+              <button type="button" id="cancel-edit" class="btn btn-secondary"><i class="fas fa-times"></i> Отмена</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast-container" aria-hidden="true"></div>
+  <script>
+    let userData = null;
+
+    // Загрузка данных пользователя из localStorage или sessionStorage
+    function loadUserProfile() {
+      let user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+
+      // Если не найдено в localStorage, проверить sessionStorage
+      if (!user) {
+        user = JSON.parse(sessionStorage.getItem('currentUser') || 'null');
+      }
+
+      if (!user) {
+        // Если данных нет, подождать немного и попробовать снова (на случай если идет процесс входа)
+        setTimeout(() => {
+          user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+          if (!user) {
+            user = JSON.parse(sessionStorage.getItem('currentUser') || 'null');
+          }
+          if (!user) {
+            window.location.href = '/auth.html';
+            return;
+          }
+          userData = user;
+          displayProfile(userData);
+        }, 500);
+        return;
+      }
+
+      userData = user;
+      displayProfile(userData);
+    }
+
+    // Отображение профиля
+    function displayProfile(data) {
+      const profileInfo = document.getElementById('profile-info');
+      profileInfo.innerHTML = `
+        <div class="profile-card">
+          <div class="profile-header">
+            <div class="profile-avatar">
+              <i class="fas fa-user-circle"></i>
+              <span class="avatar-initials">${data.firstName.charAt(0)}${data.lastName.charAt(0)}</span>
+            </div>
+            <div class="profile-info">
+              <h2>${data.firstName} ${data.lastName}</h2>
+              <p class="profile-role"><i class="fas fa-user-tag"></i> ${data.isAdmin ? 'Администратор' : 'Пользователь'}</p>
+            </div>
+          </div>
+
+          <div class="profile-details">
+            <div class="detail-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                <strong>Телефон</strong>
+                <span>${data.phone || 'Не указан'}</span>
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <strong>Email</strong>
+                <span>${data.email}</span>
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-calendar-alt"></i>
+              <div>
+                <strong>Дата регистрации</strong>
+                <span>${data.createdAt ? new Date(data.createdAt).toLocaleDateString('ru-RU') : 'Не указана'}</span>
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-clock"></i>
+              <div>
+                <strong>Последний вход</strong>
+                <span>${data.lastLogin ? new Date(data.lastLogin).toLocaleDateString('ru-RU') : 'Не указан'}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-actions">
+            <button id="edit-btn" class="btn btn-primary"><i class="fas fa-edit"></i> Редактировать данные</button>
+          </div>
+        </div>
+      `;
+
+      // Обработчик кнопки редактирования
+      document.getElementById('edit-btn').addEventListener('click', showEditForm);
+    }
+
+    // Показать форму редактирования
+    function showEditForm() {
+      document.getElementById('profile-info').style.display = 'none';
+      document.getElementById('edit-form').style.display = 'block';
+
+      // Заполнить форму текущими данными
+      document.getElementById('first-name').value = userData.firstName;
+      document.getElementById('last-name').value = userData.lastName;
+      document.getElementById('phone').value = userData.phone || '';
+      document.getElementById('email').value = userData.email;
+      document.getElementById('position').value = userData.isAdmin ? 'менеджер' : 'пользователь';
+    }
+
+    // Скрыть форму редактирования
+    function hideEditForm() {
+      document.getElementById('edit-form').style.display = 'none';
+      document.getElementById('profile-info').style.display = 'block';
+    }
+
+    // Получить текстовое представление статуса
+    function getStatusText(status) {
+      const statusMap = {
+        'active': 'Активен',
+        'inactive': 'Неактивен',
+        'vacation': 'В отпуске'
+      };
+      return statusMap[status] || status;
+    }
+
+    // Показать сообщение
+    function showMessage(message, type = 'info') {
+      const toast = document.createElement('div');
+      toast.className = `toast toast-${type}`;
+      toast.textContent = message;
+      document.querySelector('.toast-container').appendChild(toast);
+
+      setTimeout(() => {
+        toast.remove();
+      }, 3000);
+    }
+
+    // Инициализация
+    document.addEventListener('DOMContentLoaded', () => {
+      loadUserProfile();
+
+      // Обработчик формы редактирования
+      document.getElementById('profile-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const updatedData = {
+          firstName: document.getElementById('first-name').value.trim(),
+          lastName: document.getElementById('last-name').value.trim(),
+          phone: document.getElementById('phone').value.trim(),
+          email: document.getElementById('email').value.trim(),
+          isAdmin: document.getElementById('position').value === 'менеджер'
+        };
+
+        // Обновить данные в localStorage
+        const currentUser = { ...userData, ...updatedData };
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+        userData = currentUser;
+        displayProfile(userData);
+        hideEditForm();
+        showMessage('Данные успешно обновлены', 'success');
+      });
+
+      // Обработчик отмены редактирования
+      document.getElementById('cancel-edit').addEventListener('click', hideEditForm);
+    });
+  </script>
+</body>
+</html>

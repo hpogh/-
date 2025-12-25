@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Кофейня у дома</title>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="brand">
+                <div class="logo">
+                    <i class="fas fa-mug-hot"></i>
+                </div>
+                <div>
+                    <h1 class="site-title">Кофейня у дома</h1>
+                    <div class="site-subtitle">Найдите нас или свяжитесь с нами</div>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <a href="/index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a>
+                <a href="/menu.html" class="nav-link"><i class="fas fa-coffee"></i> Меню</a>
+               
+                <a href="/contacts.html" class="nav-link active"><i class="fas fa-map-marker-alt"></i> Контакты</a>
+                <a href="/auth.html" class="nav-link"><i class="fas fa-user"></i> Войти</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contacts Hero -->
+    <section class="hero" style="background: linear-gradient(rgba(43, 24, 16, 0.9), rgba(43, 24, 16, 0.8)); padding: 80px 0;">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Как нас найти</h1>
+                <p class="hero-subtitle">Приходите в гости или свяжитесь с нами</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="section">
+        <div class="container">
+            <div class="grid grid-2" style="gap: 50px;">
+                <!-- Contact Details -->
+                <div>
+                    <h2 class="section-title" style="text-align: left;">Контактная информация</h2>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item-large">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3>Адрес</h3>
+                                <p>ул. Кофейная, 15, Москва<br>Ближайшее метро: "Цветной бульвар"</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item-large">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h3>Телефон</h3>
+                                <p>+7 (999) 123-45-67<br>Для заказов и бронирования</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item-large">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3>Email</h3>
+                                <p>info@coffeeathome.ru<br>Для сотрудничества и предложений</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item-large">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h3>Часы работы</h3>
+                                <p>
+                                    Понедельник - Пятница: 7:00 - 22:00<br>
+                                    Суббота: 8:00 - 23:00<br>
+                                    Воскресенье: 9:00 - 21:00
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-section" style="margin-top: 40px;">
+                        <h3>Мы в социальных сетях</h3>
+                        <div class="social-links-large">
+                            <a href="#" class="social-link-large">
+                                <i class="fab fa-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="#" class="social-link-large">
+                                <i class="fab fa-vk"></i>
+                                <span>ВКонтакте</span>
+                            </a>
+                            <a href="#" class="social-link-large">
+                                <i class="fab fa-telegram"></i>
+                                <span>Telegram</span>
+                            </a>
+                            <a href="#" class="social-link-large">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div>
+                    <div class="contact-form-card">
+                        <h2>Напишите нам</h2>
+                        <p style="margin-bottom: 30px;">Оставьте сообщение, и мы ответим вам в ближайшее время</p>
+                        
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label>Ваше имя</label>
+                                <input type="text" placeholder="Как к вам обращаться?" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Ваш email</label>
+                                <input type="email" placeholder="example@email.com" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Тема сообщения</label>
+                                <select required>
+                                    <option value="">Выберите тему</option>
+                                    <option value="reservation">Бронирование столика</option>
+                                    <option value="feedback">Отзыв о посещении</option>
+                                    <option value="cooperation">Сотрудничество</option>
+                                    <option value="other">Другое</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Сообщение</label>
+                                <textarea rows="5" placeholder="Напишите ваше сообщение..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                <i class="fas fa-paper-plane"></i> Отправить сообщение
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Мы на карте</h2>
+            
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>ул. Кофейная, 15, Москва</h3>
+                    <p>Ближайшее метро: "Цветной бульвар"<br>5 минут пешком от станции</p>
+                    
+                    <div class="map-features">
+                        <div class="map-feature">
+                            <i class="fas fa-parking"></i>
+                            <span>Парковка рядом</span>
+                        </div>
+                        <div class="map-feature">
+                            <i class="fas fa-wheelchair"></i>
+                            <span>Доступная среда</span>
+                        </div>
+                        <div class="map-feature">
+                            <i class="fas fa-wifi"></i>
+                            <span>Бесплатный Wi-Fi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="transport-info">
+                <h3>Как добраться</h3>
+                <div class="transport-options">
+                    <div class="transport-option">
+                        <i class="fas fa-subway"></i>
+                        <div>
+                            <h4>Метро</h4>
+                            <p>Станция "Цветной бульвар", 5 минут пешком</p>
+                        </div>
+                    </div>
+                    <div class="transport-option">
+                        <i class="fas fa-bus"></i>
+                        <div>
+                            <h4>Автобус</h4>
+                            <p>Остановка "Ул. Кофейная", маршруты №15, №38</p>
+                        </div>
+                    </div>
+                    <div class="transport-option">
+                        <i class="fas fa-car"></i>
+                        <div>
+                            <h4>Автомобиль</h4>
+                            <p>Парковка на 20 мест рядом с кофейней</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section">
+        <div class="container">
+            <div class="cta-card">
+                <h2>Ждем вас в гости!</h2>
+                <p>Приходите насладиться лучшим кофе в уютной атмосфере</p>
+                <div class="cta-buttons">
+                    <a href="tel:+79991234567" class="btn btn-primary">
+                        <i class="fas fa-phone"></i> Позвонить сейчас
+                    </a>
+                    <a href="/menu.html" class="btn btn-secondary">
+                        <i class="fas fa-coffee"></i> Посмотреть меню
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="grid grid-4">
+                <div>
+                    <h3>Кофейня у дома</h3>
+                    <p>Уютное место для любителей хорошего кофе и домашней атмосферы.</p>
+                </div>
+                <div>
+                    <h3>Часы работы</h3>
+                    <ul class="footer-links">
+                        <li>Пн-Пт: 7:00-22:00</li>
+                        <li>Сб: 8:00-23:00</li>
+                        <li>Вс: 9:00-21:00</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Контакты</h3>
+                    <ul class="footer-links">
+                        <li>ул. Кофейная, 15</li>
+                        <li>+7 (999) 123-45-67</li>
+                        <li>info@coffeeathome.ru</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Мы в соцсетях</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-vk"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Кофейня у дома. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Contact form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = this.querySelector('input[type="text"]').value;
+            const email = this.querySelector('input[type="email"]').value;
+            const subject = this.querySelector('select').value;
+            const message = this.querySelector('textarea').value;
+            
+            // In a real application, you would send this data to a server
+            // For now, just show a success message
+            alert(`Спасибо, ${name}! Ваше сообщение отправлено. Мы ответим вам на ${email} в ближайшее время.`);
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Highlight current page in navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname;
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+    </script>
+
+    <style>
+        /* Contact Details */
+        .contact-details {
+            margin-top: 30px;
+        }
+        
+        .contact-item-large {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 25px;
+            background: var(--surface);
+            border-radius: var(--radius);
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-item-large:hover {
+            transform: translateY(-3px);
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .contact-item-large h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+        
+        .contact-item-large p {
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+        
+        /* Social Links Large */
+        .social-links-large {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link-large {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: var(--surface);
+            border-radius: var(--radius);
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+        
+        .social-link-large:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .social-link-large i {
+            font-size: 24px;
+            width: 30px;
+        }
+        
+        /* Contact Form */
+        .contact-form-card {
+            background: var(--surface);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            height: 100%;
+        }
+        
+        .contact-form-card h2 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 16px;
+            transition: border-color 0.3s;
+            background: var(--background);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        /* Map Section */
+        .map-container {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            border-radius: var(--radius-lg);
+            padding: 50px;
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+        
+        .map-placeholder i {
+            font-size: 80px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .map-placeholder h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .map-placeholder p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .map-features {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .map-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+        }
+        
+        .map-feature i {
+            font-size: 20px;
+        }
+        
+        /* Transport Info */
+        .transport-info {
+            margin-top: 50px;
+        }
+        
+        .transport-info h3 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary);
+            font-size: 28px;
+        }
+        
+        .transport-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .transport-option {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 25px;
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .transport-option i {
+            font-size: 32px;
+            color: var(--primary);
+        }
+        
+        .transport-option h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+        
+        .transport-option p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+        
+        /* CTA Card */
+        .cta-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 50px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+        }
+        
+        .cta-card h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .cta-card p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        @media (max-width: 992px) {
+            .grid.grid-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .transport-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-links-large {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .map-features {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .map-feature {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-item-large {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-icon {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</body>
+</html>
